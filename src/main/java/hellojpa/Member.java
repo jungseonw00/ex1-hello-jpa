@@ -1,41 +1,40 @@
 package hellojpa;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
-//@Table(name = "USER")
 public class Member {
 
     @Id
     private Long id;
 
-    //@Column(name = "username")
-    private String name;
+    // updatable = false인 필드는 데이터가 변경되지 않음.
+    @Column(name = "name", nullable = false)
+    private String username;
+
+    private Integer age;
+
+    // enum 타입 매핑
+    @Enumerated(EnumType.STRING)
+    private RoleType roleType;
+
+    // 날짜 타입 매핑
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdDate;
+
+    // 날짜 타입 매핑
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastModifiedDate;
+
+    // BLOB, CLOB 매핑
+    @Lob
+    private String description;
+
+    // DB 칼럼에는 저장하지 않을 때 사용
+    @Transient
+    private int temp;
 
     public Member() {
-    }
-
-    public Member(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }

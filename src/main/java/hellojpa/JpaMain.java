@@ -29,10 +29,6 @@ public class JpaMain {
                     .setMaxResults(10)
                     .getResultList();
 
-            for (Member member : result) {
-                System.out.println("member.getName() = " + member.getName());
-            }
-
             tx.commit();
         } catch (Exception E) {
             tx.rollback();
