@@ -4,7 +4,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.List;
 
 public class JpaMain {
 
@@ -23,12 +22,15 @@ public class JpaMain {
             // JPA를 통해 Entity를 가져오면 JPA가 관리를 한다.
             // 커밋하는 시점에 값이 바뀐 걸 체크하고 바꼈으면 update 쿼리를 날린다.
 
-            // Member findMember = em.find(Member.class, 1L);
-            List<Member> result = em.createQuery("select m from Member as m", Member.class)
-                    .setFirstResult(1) // 페이징 처리 1 ~ 10 까지
-                    .setMaxResults(10)
-                    .getResultList();
+            Member member = new Member();
+            member.setUsername("C");
 
+            System.out.println("====================");
+            em.persist(member);
+
+            System.out.println("member.getId() = " + member.getId());
+            System.out.println("====================");
+            
             tx.commit();
         } catch (Exception E) {
             tx.rollback();
