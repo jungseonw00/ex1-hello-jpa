@@ -1,5 +1,6 @@
 package hellojpa;
 
+import hellojpa.entity.Member;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -23,7 +24,6 @@ public class JpaMain {
             // 커밋하는 시점에 값이 바뀐 걸 체크하고 바꼈으면 update 쿼리를 날린다.
 
             Member member = new Member();
-            member.setUsername("C");
 
             System.out.println("====================");
             em.persist(member);
