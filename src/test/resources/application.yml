@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: TEST
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/study?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
+    username: root
+    password: tiger
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        auto_quote_keyword: false
+        globally_quoted_identifiers: false
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        default_batch_fetch_size: 10
+        use_sql_comments: true
+    open-in-view: false
+
+logging:
+  level:
+    p6spy: info
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: true

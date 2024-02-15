@@ -1,10 +1,9 @@
-package hellojpa;
+package hellojpa.study;
 
-import hellojpa.entity.Member;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Persistence;
 
 public class JpaMain {
 
@@ -23,14 +22,6 @@ public class JpaMain {
             // JPA를 통해 Entity를 가져오면 JPA가 관리를 한다.
             // 커밋하는 시점에 값이 바뀐 걸 체크하고 바꼈으면 update 쿼리를 날린다.
 
-            Member member = new Member();
-
-            System.out.println("====================");
-            em.persist(member);
-
-            System.out.println("member.getId() = " + member.getId());
-            System.out.println("====================");
-            
             tx.commit();
         } catch (Exception E) {
             tx.rollback();

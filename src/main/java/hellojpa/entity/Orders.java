@@ -17,22 +17,23 @@ import lombok.ToString;
 
 @Entity
 @NoArgsConstructor(access = PROTECTED)
-@ToString(exclude = {"members"})
+@ToString(exclude = {"member"})
 @Getter
-public class Team {
+public class Orders {
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "team_id")
+	@Column(name = "order_id")
 	private Long id;
-
 	private String name;
+	private int quantity;
 
-	@OneToMany(mappedBy = "team")
-	private List<Member> members = new ArrayList<>();
+	@OneToMany(mappedBy = "orders")
+	private List<Member> member = new ArrayList<>();
 
 	@Builder
-	public Team(String name) {
+	public Orders(String name, int quantity) {
 		this.name = name;
+		this.quantity = quantity;
 	}
 }
